@@ -5,7 +5,9 @@
 
 package oop.assignment3.ex41;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.util.Collections;
 import java.util.List;
@@ -24,12 +26,13 @@ public class StringAlpha {
     //function to print the formatted list.
     public static void printFormattedList(List names) throws IOException {
 
-        //create a new PrintWriter for the output file.
-        PrintWriter out = new PrintWriter("exercise41_output.txt");
+        //create a new PrintStream for the output file.
+        PrintStream out = new PrintStream(new FileOutputStream("exercise41_output.txt"));
+        System.setOut(out);
 
         //print out the header of the file, which includes the number of names.
-        out.println("Total of " + names.size() + " names");
-        out.println("-----------------");
+        System.out.println("Total of " + names.size() + " names");
+        System.out.println("-----------------");
 
         //print out each element of the array list by iterating through each index.
         for(int i = 0 ; i < names.size() ; i++){
