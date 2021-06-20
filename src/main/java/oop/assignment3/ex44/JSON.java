@@ -5,35 +5,51 @@
 
 package oop.assignment3.ex44;
 
-import com.google.gson.Gson;
+import com.google.gson.*;
 
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class JSON {
 
     public static Gson gson = new Gson();
 
-    public static Product[] convertJsonToArray() {
+    public static List<Product> convertJsonToArray() {
 
+        //create new file from path.
         String filePath = "src/main/resources/exercise44_input.json";
-        String jsonString = readAllBytes(filePath);
+        File input = new File(filePath);
 
-        Product[] products = new Gson().fromJson(jsonString, Product[].class);
+        //Create array list for products from Json file.
+        List<Product> productsList = new ArrayList<>();
 
-        return products;
-    }
+        try {
+            //User Gson to parse elements into Product object.
+            JsonElement fileElement = JsonParser.parseReader(new FileReader(input));
+            JsonObject fileObject = fileElement.getAsJsonObject();
 
-    private static String readAllBytes(String filePath){
-        String data = "";
+            //Extract the data from Json file to appropriate data types.
+            JsonArray arrayOfProducts = fileObject.get("products").getAsJsonArray();
 
-        try{
-            data = new String(Files.readAllBytes(Paths.get(filePath)));
-        }
-        catch(Exception e){
+            //Iterate through each element of the Json file.
+            for (JsonElement productElement : arrayOfProducts){
+
+                JsonObject productJsonObject = productElement.getAsJsonObject();
+
+                String name = productJsonObject.get("name").getAsString();
+                double price = productJsonObject.get("price").getAsDouble();
+                int quantity = productJsonObject.get("quantity").getAsInt();
+
+                Product product = new Product(name, price, quantity);
+                productsList.add(product);
+            }
+
+        } catch (Exception e) {
             e.printStackTrace();
+
         }
-        return data;
+        return productsList;
     }
 
 }

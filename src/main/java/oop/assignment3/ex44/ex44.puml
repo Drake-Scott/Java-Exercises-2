@@ -1,0 +1,21 @@
+@startuml
+
+class App{
+    Main()
+    readUserInput()
+    matchFound()
+}
+
+class JSON{
+    convertJsonToArray()
+}
+
+class Product{
+    + String name;
+    + double price;
+    + int quantity;
+}
+App <-- Product
+Product <-- JSON
+
+@enduml
