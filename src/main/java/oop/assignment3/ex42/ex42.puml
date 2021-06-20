@@ -1,0 +1,20 @@
+@startuml
+
+object Employee{
+
+}
+class App{
+    main()
+}
+class EmployeeOperations{
+    printList()
+}
+class FileOperations{
+    getData()
+    parseData()
+}
+
+App <-- EmployeeOperations
+App <-- FileOperations
+EmployeeOperations <-- Employee
+@enduml

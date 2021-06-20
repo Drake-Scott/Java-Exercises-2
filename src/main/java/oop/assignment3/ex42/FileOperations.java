@@ -45,7 +45,7 @@ public class FileOperations {
         //create 3 variables for the employees name and salary.
         String lname = data[0];
         String fname = data[1];
-        float salary = Float.parseFloat(data[3]);
+        float salary = Float.parseFloat(data[2]);
 
         //create a new object to add to the list.
         Employees employeeObj = new Employees(lname, fname, salary);

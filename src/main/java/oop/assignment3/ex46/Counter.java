@@ -5,6 +5,10 @@
 
 package oop.assignment3.ex46;
 
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
 public class Counter {
 
     //Function to count the amount of times "badger" appears.
@@ -43,4 +47,16 @@ public class Counter {
         }
         return snakeCount;
     }
+
+    public static int genericCounter(List<String> data, String key){
+        int count = 0;
+        for(int i = 0; i < data.size() ; i++){
+            if(data.get(i) == key){
+                count++;
+            }
+        }
+        return count;
+    }
+
+
 }

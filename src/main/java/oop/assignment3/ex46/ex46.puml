@@ -1,0 +1,19 @@
+@startuml
+class App{
+    main()
+}
+class FileOperations{
+    getList();
+}
+
+class MapOperations{
+    getMap()
+    sortMap()
+    getKeyArray()
+    printMap()
+}
+
+App <-- MapOperations
+App <-- FileOperations
+
+@enduml
