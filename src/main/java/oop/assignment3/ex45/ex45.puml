@@ -1,0 +1,20 @@
+@startuml
+
+class App{
+    main()
+    getUserInput()
+}
+
+class FileOperations{
+
+}
+
+class Replacer{
+    replaceinstances()
+}
+
+App <-- FileOperations
+App <-- Replacer
+FileOperations <- Replacer
+
+@enduml

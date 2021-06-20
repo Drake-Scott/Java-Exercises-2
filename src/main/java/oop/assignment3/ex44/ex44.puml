@@ -4,6 +4,7 @@ class App{
     Main()
     readUserInput()
     matchFound()
+    iterativeLoop()
 }
 
 class JSON{

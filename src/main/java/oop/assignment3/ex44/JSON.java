@@ -35,12 +35,15 @@ public class JSON {
             //Iterate through each element of the Json file.
             for (JsonElement productElement : arrayOfProducts){
 
+                //Creaste Json Object using Gson
                 JsonObject productJsonObject = productElement.getAsJsonObject();
 
+                //For each element of the Json file, get the name, price, and quantity.
                 String name = productJsonObject.get("name").getAsString();
                 double price = productJsonObject.get("price").getAsDouble();
                 int quantity = productJsonObject.get("quantity").getAsInt();
 
+                //create a new product with the previous information and add it to the list
                 Product product = new Product(name, price, quantity);
                 productsList.add(product);
             }
